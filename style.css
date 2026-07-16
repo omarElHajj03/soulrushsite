@@ -354,6 +354,8 @@ a:hover { color: var(--soul); }
 
 .descent-orb {
   position: absolute;
+  top: 0;   /* anchor to the track origin — without this, the static position */
+  left: 0;  /* (below the 100%-tall svg) offsets every translate() past the page */
   width: 14px;
   height: 14px;
   margin: -7px 0 0 -7px;
