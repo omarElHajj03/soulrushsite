@@ -14,6 +14,8 @@
   --soul: #ffffff;          /* glow cores */
   --crimson: #a41221;       /* deep accent — fills, glows */
   --crimson-bright: #d43a4a; /* legible accent on black */
+  --sacred: #f2f0ea;        /* the pale liquid the depths ramp to — light bands */
+  --ink: #26262b;           /* text on light bands */
 
   --font-display: "Cinzel", "Times New Roman", serif;
   --font-body: "Crimson Text", Georgia, serif;
@@ -68,13 +70,17 @@ a:hover { color: var(--soul); }
 
 .quote { font-style: italic; color: var(--mist); }
 
-/* ── header ───────────────────────────────────────────────── */
+/* ── header: a sacred-white band over the void ────────────── */
 
 .site-head {
+  background: var(--sacred);
+}
+
+.site-head-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: 28px;
+  padding-block: 20px;
 }
 
 .site-head a {
@@ -83,9 +89,10 @@ a:hover { color: var(--soul); }
   letter-spacing: 0.32em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--mist);
+  color: var(--ink);
 }
-.site-head a:hover { color: var(--soul); }
+.site-head a:hover { color: var(--crimson); }
+.site-head a:focus-visible { outline-color: var(--ink); }
 
 /* ── hero: the game's own menu, re-set in HTML ────────────── */
 
@@ -414,11 +421,22 @@ a:hover { color: var(--soul); }
 .finale { text-align: center; }
 .finale .orn { margin-top: 0; }
 
-/* ── footer ───────────────────────────────────────────────── */
+/* ── footer: the pale liquid rises to meet the page ───────── */
+/* Layered waves echo the game's liquid bands (dark → mist → sacred),
+   then the footer body sits inside the white liquid itself. */
+
+.liquid {
+  display: block;
+  margin-top: clamp(3rem, 8vh, 6rem);
+}
+.liquid svg {
+  display: block;
+  width: 100%;
+  height: clamp(56px, 9vw, 110px);
+}
 
 .site-foot {
-  border-top: 1px solid var(--line);
-  margin-top: clamp(3rem, 8vh, 6rem);
+  background: var(--sacred);
 }
 
 .foot-row {
@@ -427,15 +445,16 @@ a:hover { color: var(--soul); }
   gap: 1rem 2.4rem;
   justify-content: space-between;
   align-items: center;
-  padding-block: 2.2rem;
+  padding-block: 2.4rem;
   font-family: var(--font-utility);
   font-size: 0.7rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--mist);
+  color: var(--ink);
 }
-.foot-row a { color: var(--mist); text-decoration: none; }
-.foot-row a:hover { color: var(--soul); }
+.foot-row a { color: var(--ink); text-decoration: none; }
+.foot-row a:hover { color: var(--crimson); }
+.foot-row a:focus-visible { outline-color: var(--ink); }
 
 /* ── scroll reveal ────────────────────────────────────────── */
 
