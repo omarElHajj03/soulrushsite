@@ -18,10 +18,12 @@
 <body>
 
   <!-- ══════════════════════════════════════════════════════
-       PLACEHOLDER: this policy is a template. It has NOT been
-       reviewed by a lawyer and must be checked (SDK list, data
-       categories, consent flow, children's policy) against the
-       actual shipped build before Play Console submission.
+       2026-08-09: checked against the actual client + schema (see
+       src/systems/PlayerIdentity.ts, src/systems/Leaderboard.ts,
+       supabase/schema.sql) — the leaderboard section, permissions,
+       and ads status now match what the app really does. Still not
+       a substitute for an actual lawyer's review, and the Advertising
+       section needs a real pass the day AppLovin is actually wired in.
        ══════════════════════════════════════════════════════ -->
 
   <header class="site-head">
@@ -34,23 +36,41 @@
   <main class="container">
     <article class="doc">
       <h1>Privacy Policy</h1>
-      <p class="doc-updated">Soul Rush &middot; PL Labs &middot; Last updated July 16, 2026</p>
+      <p class="doc-updated">Soul Rush &middot; PL Labs &middot; Last updated August 9, 2026</p>
 
       <p>
         This policy describes what information <strong>Soul Rush</strong>,
         published by <strong>PL Labs</strong>, handles
-        when you play, and the choices you have. The short version: the game
-        has no accounts, asks for nothing personal, and keeps your progress on
-        your own device. The only third parties involved are the advertising
-        networks that serve ads in the free version.
+        when you play, and the choices you have. The short version: there is
+        no account system and no login. If you choose to appear on the global
+        leaderboard, a name you type in and your score are made public; the
+        game does not otherwise ask for anything personal.
       </p>
 
       <h2>Information we collect</h2>
       <p>
-        Soul Rush itself does <strong>not</strong> collect, store, or transmit
-        personal information. There is no account system, no login, no
-        registration, and no form that asks for your name, email address, or
-        any other personal detail.
+        Soul Rush does not have an account system, a login, or a registration
+        step, and it never asks for your email address or any real-world
+        identity information.
+      </p>
+      <p>
+        If you choose to submit a run to the <strong>global leaderboard</strong>,
+        the game sends: the display name you typed in (visible to everyone who
+        views the board), your score and run duration, and a title you've
+        selected. Alongside this, the app generates a random identifier on
+        your device the first time you play &mdash; a string it invents itself,
+        <strong>not</strong> your Android advertising ID, IMEI, or any other
+        real hardware identifier &mdash; and uses it, together with a second
+        random secret kept on your device, to prove that later updates to your
+        score come from the same install. Neither value means anything outside
+        Soul Rush, and both reset if you clear the app's storage or reinstall.
+        Using the leaderboard is optional; the game is fully playable without
+        ever submitting a score.
+      </p>
+      <p>
+        This data is stored on our backend (Supabase) for as long as your
+        leaderboard entry exists, is never sold, and is shared with no one
+        beyond what's needed to display the board itself.
       </p>
 
       <h2>Data stored on your device</h2>
@@ -63,8 +83,9 @@
 
       <h2>Advertising</h2>
       <p>
-        The game shows ads served by <strong>AppLovin</strong>, a third-party
-        advertising network. See the
+        Soul Rush does not currently show ads. When ads are introduced, they
+        will be served by <strong>AppLovin</strong>, a third-party
+        advertising network, and this page will be updated first. See the
         <a href="https://legal.applovin.com/privacy/" rel="noopener">AppLovin Privacy Policy</a>
         for how they handle data.
       </p>
@@ -100,9 +121,20 @@
 
       <h2>Permissions</h2>
       <p>
-        The game requests network access only, which is used solely to load
-        ads. It does not request access to your contacts, camera, microphone,
-        files, or precise location.
+        The game requests network access only, used to submit and load
+        leaderboard scores and, once introduced, to load ads. It does not
+        request access to your contacts, camera, microphone, files, or
+        precise location.
+      </p>
+
+      <h2>Deleting your data</h2>
+      <p>
+        To have your leaderboard entry removed, email us at the address below
+        from any address, telling us the display name shown on the board. We
+        delete the entry and cannot recover it afterward. Progress stored only
+        on your device (scores, streaks, cosmetics, settings) is deleted by
+        uninstalling the game or clearing its data yourself &mdash; we have no
+        copy of it to remove.
       </p>
 
       <h2>Changes to this policy</h2>
