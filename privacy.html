@@ -58,9 +58,9 @@
         the game sends: the display name you typed in (visible to everyone who
         views the board), your score and run duration, and a title you've
         selected. Alongside this, the app generates a random identifier on
-        your device the first time you play &mdash; a string it invents itself,
-        <strong>not</strong> your Android advertising ID, IMEI, or any other
-        real hardware identifier &mdash; and uses it, together with a second
+        your device the first time you play, a string it invents itself and
+        is <strong>not</strong> your Android advertising ID, IMEI, or any
+        other real hardware identifier, and uses it together with a second
         random secret kept on your device, to prove that later updates to your
         score come from the same install. Neither value means anything outside
         Soul Rush, and both reset if you clear the app's storage or reinstall.
@@ -134,7 +134,7 @@
         tap <strong>REMOVE ME</strong> below your row, then confirm by
         tapping <strong>REMOVE</strong>. This immediately and permanently
         deletes your name, score, run duration, title, and device identifier
-        from our database (Supabase) &mdash; there is no undo, and we keep no
+        from our database (Supabase). There is no undo, and we keep no
         backup copy afterward.
       </p>
       <p>
@@ -144,8 +144,8 @@
         for you manually.
       </p>
       <p>
-        A leaderboard entry is otherwise kept indefinitely &mdash; there is no
-        automatic expiry &mdash; until you delete it yourself or ask us to.
+        A leaderboard entry is otherwise kept indefinitely, with no
+        automatic expiry, until you delete it yourself or ask us to.
         Progress stored only on your device (best scores, streaks, unlocked
         cosmetics, settings) is deleted the moment you uninstall the game or
         clear its data; we never receive a copy of that data in the first
