@@ -520,6 +520,16 @@ a:hover { color: var(--soul); }
   margin: 2.6rem 0 0.8rem;
 }
 
+.doc h3 {
+  font-family: var(--font-utility);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 1.8rem 0 0.6rem;
+}
+
 .doc p, .doc li { color: var(--mist); }
 .doc p { margin-block: 0.8rem; }
 .doc a { text-decoration-color: rgba(233, 231, 226, 0.4); }

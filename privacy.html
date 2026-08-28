@@ -18,12 +18,14 @@
 <body>
 
   <!-- ══════════════════════════════════════════════════════
-       2026-08-09: checked against the actual client + schema (see
+       2026-08-24: checked against the actual client + schema (see
        src/systems/PlayerIdentity.ts, src/systems/Leaderboard.ts,
-       supabase/schema.sql) — the leaderboard section, permissions,
-       and ads status now match what the app really does. Still not
-       a substitute for an actual lawyer's review, and the Advertising
-       section needs a real pass the day AppLovin is actually wired in.
+       src/systems/GoogleAuth.ts, src/systems/ProgressSync.ts, src/systems/Ads.ts,
+       supabase/schema.sql) — rewritten for two real changes since the last pass:
+       optional Google Sign-In (account recovery + progress backup, plus Friends)
+       shipped, and the ad network moved from AppLovin to Yodo1 MAS. Everything
+       below now matches what the app really does. Still not a substitute for an
+       actual lawyer's review.
        ══════════════════════════════════════════════════════ -->
 
   <header class="site-head">
@@ -36,23 +38,29 @@
   <main class="container">
     <article class="doc">
       <h1>Privacy Policy</h1>
-      <p class="doc-updated">Soul Rush &middot; PL Labs &middot; Last updated August 9, 2026</p>
+      <p class="doc-updated">Soul Rush &middot; PL Labs &middot; Last updated August 24, 2026</p>
 
       <p>
         This policy describes what information <strong>Soul Rush</strong>,
-        published by <strong>PL Labs</strong>, handles
-        when you play, and the choices you have. The short version: there is
-        no account system and no login. If you choose to appear on the global
-        leaderboard, a name you type in and your score are made public; the
-        game does not otherwise ask for anything personal.
+        published by <strong>PL Labs</strong>, handles when you play, and the
+        choices you have. The short version: you can play the entire game,
+        including the global leaderboard, without ever creating an account.
+        If you choose to appear on the leaderboard, a name you type in and
+        your score are made public. If you choose to sign in with Google
+        (entirely optional, and only so your progress survives a reinstall),
+        the game receives your Google account's email and name. Nothing else
+        about you is asked for.
       </p>
 
       <h2>Information we collect</h2>
       <p>
-        Soul Rush does not have an account system, a login, or a registration
-        step, and it never asks for your email address or any real-world
-        identity information.
+        Soul Rush has no required account, login, or registration step. Every
+        piece of information below is tied only to your device or, if you
+        choose to use it, to a Google account you sign in with, never to a
+        real-world identity we independently verify.
       </p>
+
+      <h3>The leaderboard (optional)</h3>
       <p>
         If you choose to submit a run to the <strong>global leaderboard</strong>,
         the game sends: the display name you typed in (visible to everyone who
@@ -63,38 +71,112 @@
         other real hardware identifier, and uses it together with a second
         random secret kept on your device, to prove that later updates to your
         score come from the same install. Neither value means anything outside
-        Soul Rush, and both reset if you clear the app's storage or reinstall.
-        Using the leaderboard is optional; the game is fully playable without
-        ever submitting a score.
+        Soul Rush, and both reset if you clear the app's storage or reinstall
+        (unless you've linked a Google account &mdash; see below). Using the
+        leaderboard is optional; the game is fully playable without ever
+        submitting a score.
+      </p>
+
+      <h3>Friends (optional)</h3>
+      <p>
+        You can share your device's random identifier (shown in-game as your
+        <strong>Soul ID</strong>) with someone else so you can each add the
+        other as a friend. Adding a friend is mutual and immediate, there is
+        no request to accept, and it makes your name, score, title, and daily
+        streak visible to them on a private friends screen (your streak is
+        <strong>not</strong> shown on the public global leaderboard, only to
+        friends). Anyone who has your Soul ID can add you this way; removing a
+        friend removes the connection for both sides at once. This feature is
+        entirely optional and only usable once you already have a leaderboard
+        entry.
+      </p>
+
+      <h3>Google Sign-In (optional)</h3>
+      <p>
+        Soul Rush's progress otherwise lives only on your device, so
+        uninstalling the game or resetting your phone loses it permanently.
+        If you choose to, you can sign in with a Google account from
+        Settings so that your leaderboard entry, friends list, and cosmetic
+        progress (see "Progress backup" below) can be restored after a
+        reinstall. Signing in is never required to play, and declining or
+        cancelling the Google account picker leaves you exactly as before, a
+        guest with a device-only identity.
       </p>
       <p>
-        This data is stored on our backend (Supabase) for as long as your
-        leaderboard entry exists, is never sold, and is shared with no one
-        beyond what's needed to display the board itself.
+        If you sign in, the game receives your Google account's
+        <strong>email address</strong> and <strong>display name</strong> from
+        Google, via Supabase (our backend provider), which verifies your
+        Google identity on our behalf. We use this only to know which Google
+        account is linked to which device, so we can hand your leaderboard
+        entry back to you later; we do not read your Google contacts,
+        calendar, files, or anything else Google may hold, and Soul Rush only
+        ever asks for the minimum account information Google Sign-In
+        provides.
+      </p>
+      <p>
+        One device may be linked to one Google account at a time, and one
+        Google account can hold the link for one device's leaderboard entry.
+        If you sign in on a second device with an account already linked
+        elsewhere, the game refuses to move the link automatically. Instead
+        you're shown the name and score already saved under that account and
+        asked whether you want to restore it onto the new device &mdash; this
+        never happens silently. Restoring a device this way issues it a
+        freshly generated secret and invalidates the previous device's copy,
+        so signing in elsewhere is also how you'd intentionally sign an old,
+        lost, or reset device out.
+      </p>
+
+      <h3>Progress backup (optional, requires Google Sign-In)</h3>
+      <p>
+        If you're signed in with Google, the game backs up your shards,
+        unlocked cosmetics, unlocked achievements and titles, your chosen Soul
+        Power, and your daily streak count to our backend, as a single
+        opaque bundle tied to your device identifier, so a reinstall on the
+        same Google account can restore them. This bundle is never shown to
+        anyone, including friends, and is used for nothing but giving it back
+        to you. Your best score is also handed back on restore (whichever is
+        higher between it and anything already set locally, so restoring can
+        never lower a score you already have). Device settings (graphics,
+        audio, frame rate) are never backed up, since they describe the
+        device, not you.
+      </p>
+      <p>
+        All of this data is stored on our backend (Supabase) for as long as
+        your leaderboard entry exists, is never sold, and is shared with no
+        one beyond what's needed to run the leaderboard, friends list, and
+        progress backup described above.
       </p>
 
       <h2>Data stored on your device</h2>
       <p>
         Your progress (best scores, streaks, unlocked cosmetics, and
-        settings) is saved in local storage on your device only. It is
-        never uploaded anywhere, and it is deleted if you uninstall the game
-        or clear its data.
+        settings) is saved in local storage on your device. If you sign in
+        with Google, the game also stores your Google session there (an
+        access token, a refresh token, and the email/name Google returned),
+        so you stay signed in between launches. None of this is uploaded
+        anywhere beyond the specific syncing described above, and all of it
+        is deleted if you uninstall the game or clear its data.
       </p>
 
       <h2>Advertising</h2>
       <p>
-        Soul Rush does not currently show ads. When ads are introduced, they
-        will be served by <strong>AppLovin</strong>, a third-party
-        advertising network, and this page will be updated first. See the
-        <a href="https://legal.applovin.com/privacy/" rel="noopener">AppLovin Privacy Policy</a>
-        for how they handle data.
+        Soul Rush shows optional rewarded video ads (for example, to revive
+        after a death) served through <strong>Yodo1 MAS</strong>, a
+        third-party ad mediation platform. Yodo1 MAS itself calls on a bundle
+        of underlying ad networks (which can include, among others, AppLovin,
+        Google AdMob, and Unity Ads) to actually fill and show an ad. See the
+        <a href="https://www.yodo1.com/privacy-policy" rel="noopener">Yodo1 Privacy Policy</a>
+        for how Yodo1 handles data, including which networks are active and
+        their own policies.
       </p>
       <p>
-        To serve and measure ads, AppLovin may automatically collect device
-        information such as your advertising identifier, IP address, coarse
-        location derived from it, device model, and how you interact with the
-        ads shown. PL Labs does not receive or store this data; it is
-        processed by AppLovin under its own policy linked above.
+        To serve and measure ads, Yodo1 MAS and the networks it calls on may
+        automatically collect device information such as your advertising
+        identifier, IP address, coarse location derived from it, device
+        model, and how you interact with the ads shown. PL Labs does not
+        receive or store this data; it is processed by Yodo1 and its ad
+        network partners under their own policies. Watching an ad is always
+        your choice; ads are never shown without you tapping to request one.
       </p>
       <p>
         You can limit ad personalization at any time from your device
@@ -116,13 +198,16 @@
         knowingly collect personal information from children. The ad network
         is configured to comply with applicable children's privacy rules on
         Google Play. If you believe a child has provided personal information
-        through the game or its ads, contact us and we will help address it.
+        through the game, a Google sign-in, or its ads, contact us and we
+        will help address it.
       </p>
 
       <h2>Permissions</h2>
       <p>
-        The game requests network access only, used to submit and load
-        leaderboard scores and, once introduced, to load ads. It does not
+        The game requests network access, used to submit and load leaderboard
+        scores, sync friends and progress backup, sign in with Google, and
+        load ads. Google Sign-In itself uses Android's built-in account
+        picker and requests no permission beyond that. Soul Rush does not
         request access to your contacts, camera, microphone, files, or
         precise location.
       </p>
@@ -133,23 +218,38 @@
         from inside Soul Rush: open the <strong>leaderboard</strong> screen,
         tap <strong>REMOVE ME</strong> below your row, then confirm by
         tapping <strong>REMOVE</strong>. This immediately and permanently
-        deletes your name, score, run duration, title, and device identifier
+        deletes your name, score, run duration, title, streak, device
+        identifier, friends list, and, if you'd signed in with Google, both
+        the link to your Google account and your backed-up progress bundle,
         from our database (Supabase). There is no undo, and we keep no
         backup copy afterward.
       </p>
       <p>
+        Signing out of Google (Settings &rarr; <strong>SIGN OUT</strong>)
+        only forgets the session stored on that device; it does not delete
+        your leaderboard entry or unlink your Google account, so signing back
+        in still finds everything as you left it. Note that signing in
+        creates an account record with Supabase (our backend provider) that
+        holds your email address independently of your leaderboard entry;
+        removing your leaderboard entry deletes the link to it, but not that
+        underlying record &mdash; if you'd like it deleted too, email us and
+        we'll remove it by hand.
+      </p>
+      <p>
         If you no longer have access to the device that submitted the score
-        (lost, reset, or the game reinstalled), email us at the address below
-        with the display name shown on the board and we will remove the entry
-        for you manually.
+        and never linked a Google account to it (lost, reset, or the game
+        reinstalled), email us at the address below with the display name
+        shown on the board and we will remove the entry for you manually.
       </p>
       <p>
         A leaderboard entry is otherwise kept indefinitely, with no
         automatic expiry, until you delete it yourself or ask us to.
         Progress stored only on your device (best scores, streaks, unlocked
-        cosmetics, settings) is deleted the moment you uninstall the game or
-        clear its data; we never receive a copy of that data in the first
-        place, so there is nothing on our end to remove.
+        cosmetics, settings, and, if signed in, your Google session) is
+        deleted the moment you uninstall the game or clear its data; beyond
+        the leaderboard, friends, and progress-backup data described above,
+        we never receive a copy of that data in the first place, so there is
+        nothing further on our end to remove.
       </p>
 
       <h2>Changes to this policy</h2>
