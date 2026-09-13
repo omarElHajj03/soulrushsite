@@ -31,9 +31,9 @@
       <p class="eyebrow rise">About Us</p>
       <h1 class="page-title rise-2">We make games we&rsquo;d want to play.</h1>
       <p class="page-lead rise-3">
-        PL Labs is a small, independent game studio. We build mobile games
-        with simple controls, a strong mood, and enough depth to keep you
-        coming back.
+        PL Labs is a small, independent studio. We build mobile games and
+        apps with simple controls, a strong mood, and enough depth to keep
+        you coming back.
       </p>
     </section>
 
@@ -65,12 +65,12 @@
         </div>
         <div class="values">
           <div class="value">
-            <h3>Easy to learn</h3>
-            <p>If it takes a tutorial to explain, it&rsquo;s too complicated. You should get it in seconds.</p>
+            <h3>Simple controls</h3>
+            <p>No clutter, no confusing menus. Pick it up and you&rsquo;re playing in moments.</p>
           </div>
           <div class="value">
-            <h3>Hard to master</h3>
-            <p>Simple controls, real skill. The best runs should feel earned.</p>
+            <h3>Real skill</h3>
+            <p>The basics come fast. The best runs take practice, and they should feel earned.</p>
           </div>
           <div class="value">
             <h3>Fair to players</h3>
@@ -82,12 +82,15 @@
 
     <section class="section">
       <div class="container">
-        <div class="contact-box">
+        <!-- Contact shows the address itself: a bare mailto: button does
+             nothing on computers with no mail app set up. -->
+        <div class="contact-box" id="contact">
           <div>
             <h2>Get in touch</h2>
-            <p>Questions, feedback, or business enquiries.</p>
+            <p>Questions, feedback, or business enquiries. Email us at</p>
+            <a class="contact-email" href="mailto:omarwaelelhajj@gmail.com">omarwaelelhajj@gmail.com</a>
           </div>
-          <a class="btn primary" href="mailto:omarwaelelhajj@gmail.com">Email us</a>
+          <button class="btn primary" type="button" data-copy="omarwaelelhajj@gmail.com">Copy email</button>
         </div>
       </div>
     </section>
@@ -99,11 +102,35 @@
       <nav aria-label="Footer">
         <a href="./">About Us</a>
         <a href="../games/">Games &amp; Services</a>
-        <a href="../privacy.html">Privacy Policy</a>
-        <a href="mailto:omarwaelelhajj@gmail.com">Contact</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </footer>
+
+  <script>
+    // "Copy email" — clipboard API where allowed, textarea fallback on
+    // plain-http previews where navigator.clipboard is unavailable.
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      const label = btn.textContent;
+      btn.addEventListener("click", async () => {
+        const text = btn.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = label), 1800);
+      });
+    });
+  </script>
 
 </body>
 </html>
