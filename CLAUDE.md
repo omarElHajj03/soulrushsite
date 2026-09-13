@@ -31,6 +31,7 @@ website set in Google Play Console.
 /assets/pl-labs-logo.png  White logo on transparent background
 /assets/favicon.svg       Studio favicon
 /privacy.html             Soul Rush privacy policy (styled by games/soul-rush/style.css)
+/games/soul-blocks/privacy.html  Soul Blocks privacy policy (link THIS one from the Play listing)
 ```
 
 Game pages don't have to use `studio.css`. Each game can have its own style

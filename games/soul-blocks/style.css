@@ -1,0 +1,443 @@
+/* ════════════════════════════════════════════════════════════
+   SOUL BLOCKS: game page (/games/soul-blocks/) on the PL Labs site.
+   Also styles games/soul-blocks/privacy.html.
+   Palette + type are lifted from the game's Vigil room
+   (src/view/skins.ts in the game repo): warm charcoal, never flat
+   black; stones carry no hue; the soul is the brightest thing on
+   screen; red means one thing, danger, and is spent on nothing else.
+   Flat, hard-edged surfaces. No bloom.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --ground: #151312;        /* the room */
+  --ground-hi: #2a2622;     /* the pool of light over the altar */
+  --ground-lo: #070606;     /* where the floor falls away */
+  --altar: #2f2e31;         /* raised surfaces */
+  --cell: #1c1b1d;          /* empty board cells */
+  --rule: #55524f;          /* hairlines */
+  --line: #2c2926;          /* quieter hairlines */
+  --soul: #fdf9ef;          /* the brightest thing, always */
+  --text: #f7f3ea;
+  --muted: #9e9890;
+  --faint: #6c675f;
+  --red: #c0303c;           /* danger only */
+
+  /* the four stone materials: top / bottom of each gradient */
+  --ash-top: #6f6b64;       --ash-bot: #3b3936;
+  --bone-top: #c4baa8;      --bone-bot: #7a7367;
+  --obsidian-top: #4d5056;  --obsidian-bot: #303238;
+  --weathered-top: #908d84; --weathered-bot: #514f4a;
+
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Spectral", Georgia, "Times New Roman", serif;
+
+  --container: 1080px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(120% 70% at 50% 0%, var(--ground-hi), var(--ground) 55%, var(--ground-lo)) no-repeat,
+    var(--ground-lo);
+  background-size: 100% 1400px, auto;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--soul); color: var(--ground); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--text); text-decoration-color: var(--rule); text-underline-offset: 3px; }
+a:hover { color: var(--soul); text-decoration-color: var(--soul); }
+
+:focus-visible { outline: 1px solid var(--soul); outline-offset: 3px; border-radius: 2px; }
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 48px);
+}
+
+/* ── the game's label style: small caps, tracked wide ─────── */
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rule {
+  display: block;
+  width: 110px;
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+}
+
+/* ── header ───────────────────────────────────────────────── */
+
+.site-head { border-bottom: 1px solid var(--line); }
+
+.site-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 18px;
+}
+
+.site-head a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+}
+.site-head a:hover { color: var(--soul); }
+.head-nav { display: flex; gap: clamp(1.1rem, 4vw, 2.4rem); }
+
+.back-arrow {
+  display: inline-block;
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.12em;
+  margin-right: 0.45em;
+  letter-spacing: 0;
+}
+
+/* ── the wordmark: SOUL in the display face, BLOCKS cut into stone ── */
+
+.wordmark { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.wordmark-soul {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: 0.3em;
+  margin-right: -0.3em; /* tracking pushes glyphs right; pull back */
+  color: var(--soul);
+}
+
+.stones { display: flex; gap: clamp(4px, 0.8vw, 7px); }
+
+.stone {
+  display: grid;
+  place-items: center;
+  width: clamp(38px, 5.4vw, 52px);
+  aspect-ratio: 1;
+  border-radius: 3px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  line-height: 1;
+  color: #151311;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.38);
+  box-shadow:
+    inset 1.2px 1.2px 0 rgba(255, 250, 240, 0.2),
+    inset -1.2px -1.2px 0 rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.stone.ash       { background: linear-gradient(155deg, var(--ash-top), var(--ash-bot)); color: #0f0e0d; }
+.stone.bone      { background: linear-gradient(155deg, var(--bone-top), var(--bone-bot)); }
+.stone.obsidian  { background: linear-gradient(155deg, var(--obsidian-top), var(--obsidian-bot)); color: #0a0b0d; text-shadow: 0 1px 0 rgba(255, 250, 240, 0.28); }
+.stone.weathered { background: linear-gradient(155deg, var(--weathered-top), var(--weathered-bot)); }
+
+/* ── hero ─────────────────────────────────────────────────── */
+
+.hero { padding-block: clamp(3rem, 8vh, 6rem) clamp(4rem, 10vh, 7rem); }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  line-height: 1.3;
+  color: var(--text);
+  margin-top: 2rem;
+}
+
+.hero-copy { color: var(--muted); max-width: 46ch; margin-top: 1.1rem; }
+
+.plaque {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #f1ebdf, #d8cfbf);
+  color: #1d1b19;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 0 1px #bdb4a4;
+}
+
+.plaque-sub { margin-top: 0.9rem; }
+
+/* a phone, drawn flat: charcoal body, one hairline, 46px-ish corners */
+.phone {
+  background: #141415;
+  border: 1px solid #2a2a2d;
+  border-radius: clamp(22px, 3.2vw, 34px);
+  padding: clamp(6px, 0.8vw, 9px);
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.8);
+}
+.phone img { border-radius: clamp(16px, 2.6vw, 26px); width: 100%; }
+
+.hero-phone { width: min(330px, 100%); justify-self: center; transform: rotate(2deg); }
+
+/* ── sections ─────────────────────────────────────────────── */
+
+.section { padding-block: clamp(4rem, 10vh, 7rem); border-top: 1px solid var(--line); }
+
+.section-head { text-align: center; margin-bottom: clamp(2.4rem, 6vh, 3.6rem); }
+.section-head .rule { margin: 1.1rem auto 0; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.6vw, 2.9rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  margin-top: 0.6rem;
+  color: var(--soul);
+}
+
+.section-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin-top: 0.9rem;
+}
+
+/* ── how it plays: three steps ────────────────────────────── */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.step { background: var(--ground); padding: clamp(1.5rem, 3vw, 2.2rem); }
+.step h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.55rem;
+  color: var(--soul);
+  margin: 1rem 0 0.5rem;
+}
+.step p { color: var(--muted); }
+
+/* tiny board diagrams made of stones */
+.mini {
+  display: grid;
+  grid-template-columns: repeat(5, 16px);
+  gap: 2px;
+  height: 50px;
+  align-content: end;
+}
+.mini i { height: 16px; border-radius: 2px; background: var(--cell); box-shadow: inset 0 0 0 1px #262426; }
+.mini i.s { background: linear-gradient(155deg, var(--bone-top), var(--bone-bot)); box-shadow: none; }
+.mini i.o { background: linear-gradient(155deg, var(--obsidian-top), var(--obsidian-bot)); box-shadow: none; }
+.mini i.lit { background: var(--soul); box-shadow: none; }
+
+/* ── the rites ────────────────────────────────────────────── */
+
+.rites-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.rites-grid .phone { width: min(300px, 100%); justify-self: center; transform: rotate(-2deg); }
+
+.rite-list { list-style: none; display: grid; gap: 1.6rem; }
+.rite-list li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: baseline; }
+.rite-name {
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.rite-list p { color: var(--muted); }
+.rite-list .angry .rite-name { color: var(--red); }
+
+.rites-note {
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+/* ── modes ────────────────────────────────────────────────── */
+
+.modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+}
+
+.mode {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 6px;
+}
+.mode-inner {
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+.mode .eyebrow { display: block; }
+.mode h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--soul);
+  margin: 0.4rem 0 0.6rem;
+}
+.mode p { color: var(--muted); }
+
+/* ── gallery ──────────────────────────────────────────────── */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.4vw, 1.8rem);
+}
+.shot figcaption { text-align: center; margin-top: 0.9rem; }
+
+/* ── finale ───────────────────────────────────────────────── */
+
+.finale { text-align: center; }
+.finale .wordmark { align-items: center; margin-bottom: 1.6rem; }
+
+/* ── privacy policy ───────────────────────────────────────── */
+
+.doc { max-width: 70ch; margin-inline: auto; padding-block: clamp(2.4rem, 7vh, 4.5rem) clamp(4rem, 9vh, 6rem); }
+
+.doc h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 5.4vw, 3.1rem);
+  line-height: 1.1;
+  color: var(--soul);
+}
+.doc-updated { margin: 1rem 0 2.4rem; }
+
+.doc .summary {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.3rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.doc .summary p { color: var(--text); margin: 0; }
+
+.doc h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.65rem;
+  color: var(--soul);
+  margin: 2.6rem 0 0.7rem;
+}
+.doc p, .doc li { color: var(--muted); }
+.doc p { margin-block: 0.8rem; }
+.doc ul { padding-left: 1.3rem; margin-block: 0.7rem; }
+.doc li { margin-block: 0.4rem; }
+.doc strong { color: var(--text); font-weight: 500; }
+.doc code {
+  font-family: Consolas, "SFMono-Regular", monospace;
+  font-size: 0.88em;
+  color: var(--text);
+  background: var(--cell);
+  padding: 0.05em 0.35em;
+  border-radius: 3px;
+}
+
+.table-wrap { overflow-x: auto; margin-block: 1rem; }
+.doc table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.doc th, .doc td { text-align: left; vertical-align: top; padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--line); }
+.doc th { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--faint); }
+.doc td { color: var(--muted); }
+.doc td:first-child { color: var(--text); white-space: nowrap; }
+
+/* ── footer ───────────────────────────────────────────────── */
+
+.site-foot { border-top: 1px solid var(--line); }
+.foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 2rem;
+  padding-block: 26px;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.foot-row nav { display: flex; gap: 2rem; }
+.foot-row a { color: var(--muted); text-decoration: none; }
+.foot-row a:hover { color: var(--soul); }
+
+/* ── entrance ─────────────────────────────────────────────── */
+
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.rise   { animation: rise 0.7s ease-out both; }
+.rise-2 { animation: rise 0.7s 0.12s ease-out both; }
+.rise-3 { animation: rise 0.7s 0.24s ease-out both; }
+.hero-phone.rise-3 { animation-name: rise-tilt; }
+@keyframes rise-tilt { from { opacity: 0; transform: translateY(12px) rotate(2deg); } to { opacity: 1; transform: rotate(2deg); } }
+
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .rise-2, .rise-3 { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── responsive ───────────────────────────────────────────── */
+
+@media (max-width: 880px) {
+  .hero-grid, .rites-grid { grid-template-columns: 1fr; }
+  .hero-phone { width: min(280px, 76%); }
+  .rites-grid .phone { width: min(260px, 70%); order: 2; }
+  .steps, .modes { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .rite-list li { grid-template-columns: 1fr; gap: 0.2rem; }
+  .head-nav { gap: 1rem; }
+  .site-head a { letter-spacing: 0.2em; }
+}

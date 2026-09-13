@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs><mask id="flat">
+    <rect x="0" y="0" width="512" height="512" fill="#fff"/>
+    <path d="M144.59,262.51 A111.41,111.41 0 0 1 367.41,262.51 L367.41,358.87 Q339.56,401.02 311.71,358.87 Q283.85,401.02 256,358.87 Q228.15,401.02 200.29,358.87 Q172.44,401.02 144.59,358.87 Z" fill="#000"/>
+    <ellipse cx="256" cy="142.07" rx="42.16" ry="13.85"
+             fill="none" stroke="#000" stroke-width="8.85"/>
+  </mask></defs>
+<g mask="url(#flat)"><rect x="23" y="23" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="181" y="23" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="339" y="23" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="23" y="181" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="181" y="181" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="339" y="181" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="23" y="339" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="181" y="339" width="150" height="150" rx="11.25" fill="#fdf9ef"/><rect x="339" y="339" width="150" height="150" rx="11.25" fill="#fdf9ef"/></g>
+</svg>

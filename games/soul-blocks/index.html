@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soul Blocks: a quiet block puzzle</title>
+  <meta name="description" content="Soul Blocks is a quiet block-placement puzzle from PL Labs. Place stones on an 8×8 altar, clear lines to free the souls inside, and earn rites that bend the board. Coming to Google Play." />
+  <meta name="theme-color" content="#151312" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Soul Blocks: a quiet block puzzle" />
+  <meta property="og:description" content="Place the stones. Clear the lines. Set the souls free. Coming to Google Play." />
+  <meta property="og:image" content="https://playsoulrush.netlify.app/games/soul-blocks/assets/feature-graphic.png" />
+  <meta property="og:url" content="https://playsoulrush.netlify.app/games/soul-blocks/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <header class="site-head">
+    <div class="container site-head-row">
+      <a href="../../"><span class="back-arrow" aria-hidden="true">&larr;</span>PL Labs</a>
+      <nav class="head-nav" aria-label="Game">
+        <a href="../">All games</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── hero: the title screen, re-set in HTML ─────────── -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="wordmark rise" aria-label="Soul Blocks">
+            <span class="wordmark-soul" aria-hidden="true">SOUL</span>
+            <span class="stones" aria-hidden="true">
+              <span class="stone weathered">B</span><span class="stone ash">L</span><span class="stone bone">O</span><span class="stone obsidian">C</span><span class="stone weathered">K</span><span class="stone ash">S</span>
+            </span>
+          </h1>
+
+          <p class="tagline rise-2">Place the stones. Clear the lines.<br />Set the souls free.</p>
+
+          <p class="hero-copy rise-2">
+            Every stone on the altar holds a soul. Fill a row or a column and
+            the stones break open, and the souls inside rise up and go free.
+            A quiet block puzzle made for one thumb and a few minutes: no
+            timer unless you want one, and no rush.
+          </p>
+
+          <p class="rise-3"><span class="plaque">Coming to Google Play</span></p>
+          <p class="eyebrow plaque-sub rise-3">Android &middot; PL Labs &middot; 2026</p>
+        </div>
+
+        <div class="hero-phone phone rise-3">
+          <img
+            src="assets/screenshots/gameplay.png"
+            width="780" height="1688"
+            alt="Soul Blocks gameplay: an 8×8 board of grey stones under a score of 2,370, with two stone pieces and an Angry Soul rite waiting in the tray."
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── how it plays ───────────────────────────────────── -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it plays</p>
+          <h2 class="section-title">Simple to learn. Deep enough to stay.</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="mini" aria-hidden="true">
+              <i></i><i></i><i class="s"></i><i></i><i></i>
+              <i></i><i class="s"></i><i class="s"></i><i></i><i></i>
+            </div>
+            <h3>Place</h3>
+            <p>Three pieces wait in the tray. Drag each one onto the 8&times;8
+            board wherever it fits. When all three are down, three more are dealt.</p>
+          </div>
+          <div class="step reveal">
+            <div class="mini" aria-hidden="true">
+              <i class="o"></i><i class="s"></i><i class="o"></i><i></i><i class="o"></i>
+              <i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i>
+            </div>
+            <h3>Clear</h3>
+            <p>Fill a whole row or column and it breaks. Clear several at once,
+            or keep clearing move after move, and your streak multiplies the score.</p>
+          </div>
+          <div class="step reveal">
+            <div class="mini" aria-hidden="true">
+              <i></i><i class="s"></i><i class="s"></i><i class="s"></i><i></i>
+              <i class="s"></i><i></i><i class="o"></i><i></i><i class="s"></i>
+            </div>
+            <h3>Survive</h3>
+            <p>The run ends when nothing in the tray fits. Leave space, plan
+            ahead, and don&rsquo;t let the board close in on you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── the rites ──────────────────────────────────────── -->
+    <section class="section" id="rites">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">The rites</p>
+          <h2 class="section-title">Free enough souls, and the board answers.</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="rites-grid">
+          <div class="phone reveal">
+            <img src="assets/screenshots/rites.png" width="780" height="1688" loading="lazy"
+              alt="The Rites screen in Soul Blocks, describing Grace, The Toll, Angry Soul and Settling." />
+          </div>
+
+          <div class="reveal">
+            <ul class="rite-list">
+              <li>
+                <span class="rite-name">Grace</span>
+                <p>Fills only the empty cells beneath it and can be set down
+                anywhere it fits, however full the board is.</p>
+              </li>
+              <li>
+                <span class="rite-name">The Toll</span>
+                <p>Rings once, and every soul on the board goes free. It pays for
+                all of them, and your streak survives.</p>
+              </li>
+              <li class="angry">
+                <span class="rite-name">Angry Soul</span>
+                <p>Burns out the nine cells around where it lands. It pays
+                nothing, but it can dig you out of a corner.</p>
+              </li>
+              <li>
+                <span class="rite-name">Settling</span>
+                <p>Tips the board toward the nearest edge. Stones slide, whatever
+                closes goes free, and the rest falls again.</p>
+              </li>
+            </ul>
+            <p class="rites-note">
+              Rites are paid for in souls. Every one you free is banked toward
+              the next. The Toll can&rsquo;t be bought: it simply comes, and only
+              to a run that is already going well.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── modes ──────────────────────────────────────────── -->
+    <section class="section" id="modes">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Three ways to play</p>
+          <h2 class="section-title">Modes</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="modes">
+          <article class="mode reveal">
+            <div class="mode-inner">
+              <span class="eyebrow">Play</span>
+              <h3>Endless</h3>
+              <p>The classic game. No clock, no limit. Chase your best score,
+              and if the board locks up, you&rsquo;re offered a rescue.</p>
+            </div>
+          </article>
+          <article class="mode reveal">
+            <div class="mode-inner">
+              <span class="eyebrow">Against time</span>
+              <h3>The Candle</h3>
+              <p>A flame burns while you play, and every line you clear feeds
+              it. The run ends when the candle goes out.</p>
+            </div>
+          </article>
+          <article class="mode reveal">
+            <div class="mode-inner">
+              <span class="eyebrow">Once a day</span>
+              <h3>Daily Rite</h3>
+              <p>One board a day, the same for everyone, with souls already
+              bound in its stones. Free them all in 21 pieces. One attempt.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── gallery ────────────────────────────────────────── -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">From the altar</p>
+          <h2 class="section-title">Screenshots</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="gallery">
+          <figure class="shot reveal">
+            <div class="phone"><img src="assets/screenshots/title.png" width="780" height="1688" loading="lazy" alt="Soul Blocks title screen: a white soul with a halo above the words SOUL BLOCKS, with PLAY and MODES buttons." /></div>
+            <figcaption class="eyebrow">Title</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone"><img src="assets/screenshots/gameplay.png" width="780" height="1688" loading="lazy" alt="A run in progress: stones on the board and three pieces in the tray." /></div>
+            <figcaption class="eyebrow">A run</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone"><img src="assets/screenshots/modes.png" width="780" height="1688" loading="lazy" alt="The Modes screen: The Candle and Daily Rite." /></div>
+            <figcaption class="eyebrow">Modes</figcaption>
+          </figure>
+          <figure class="shot reveal">
+            <div class="phone"><img src="assets/screenshots/rites.png" width="780" height="1688" loading="lazy" alt="The Rites screen describing the four ritual pieces." /></div>
+            <figcaption class="eyebrow">The rites</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── finale ─────────────────────────────────────────── -->
+    <section class="section finale" id="soon">
+      <div class="container reveal">
+        <div class="wordmark" aria-hidden="true">
+          <span class="wordmark-soul">SOUL</span>
+          <span class="stones">
+            <span class="stone weathered">B</span><span class="stone ash">L</span><span class="stone bone">O</span><span class="stone obsidian">C</span><span class="stone weathered">K</span><span class="stone ash">S</span>
+          </span>
+        </div>
+        <h2 class="section-title">Light a candle. The souls are waiting.</h2>
+        <p><span class="plaque">Coming to Google Play</span></p>
+        <p class="eyebrow plaque-sub">Free &middot; Plays offline &middot; No account needed</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="container foot-row">
+      <span>&copy; 2026 PL Labs</span>
+      <span>Soul Blocks</span>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:omarwaelelhajj@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
