@@ -1,0 +1,379 @@
+/* ════════════════════════════════════════════════════════════
+   PL LABS — studio pages (/, /about/, /games/)
+   Deliberately neutral: black ground, white logo, one modern
+   sans. Each game page under /games/<slug>/ brings its OWN
+   look (Soul Rush is gothic); the studio chrome stays plain so
+   no single game's style takes over the whole site.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #070708;
+  --surface: #0f0f12;
+  --surface-2: #16161a;
+  --line: #24242a;
+  --text: #f1f0ee;
+  --muted: #9a99a1;
+  --faint: #5d5c63;
+  --accent: #ffffff;
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --container: 1120px;
+  --radius: 18px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+
+::selection { background: #fff; color: #000; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(18px, 5vw, 48px);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── header / navigation ──────────────────────────────────── */
+
+.studio-head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(7, 7, 8, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.studio-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 68px;
+}
+
+/* text wordmark — the full logo lockup (P over PL LABS) is too tall to
+   read at header height, so it lives in the home hero instead */
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.studio-nav { display: flex; gap: 0.4rem; }
+
+.studio-nav a {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.studio-nav a:hover { color: var(--text); background: var(--surface-2); }
+.studio-nav a[aria-current="page"] { color: var(--text); border-color: var(--line); background: var(--surface); }
+
+/* ── buttons ──────────────────────────────────────────────── */
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.98rem;
+  text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { border-color: var(--faint); background: var(--surface-2); }
+.btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }
+.btn.primary:hover { background: #d9d8d5; border-color: #d9d8d5; }
+
+/* ── hero (home) ──────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  padding-block: clamp(4.5rem, 14vh, 9rem) clamp(4rem, 10vh, 7rem);
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% 0 auto;
+  height: 120%;
+  background: radial-gradient(ellipse 55% 45% at 50% 30%, rgba(255, 255, 255, 0.07), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-logo {
+  position: relative;
+  width: min(220px, 48vw);
+  margin: 0 auto;
+}
+
+.hero-title {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-top: clamp(2rem, 5vh, 3rem);
+}
+
+.hero-sub {
+  position: relative;
+  max-width: 54ch;
+  margin: 1.1rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+}
+
+.hero .btn-row { position: relative; justify-content: center; margin-top: 2.2rem; }
+
+/* ── page heads (about / games) ───────────────────────────── */
+
+.page-head { padding-block: clamp(3.5rem, 10vh, 6rem) clamp(1.5rem, 4vh, 2.5rem); }
+
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  margin-top: 0.8rem;
+}
+
+.page-lead { max-width: 60ch; margin-top: 1rem; color: var(--muted); font-size: 1.12rem; }
+
+/* ── sections ─────────────────────────────────────────────── */
+
+.section { padding-block: clamp(3rem, 8vh, 5.5rem); }
+.section + .section { border-top: 1px solid var(--line); }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.015em;
+  margin-top: 0.4rem;
+}
+
+.text-link {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.text-link:hover { color: var(--text); }
+
+/* ── project cards ────────────────────────────────────────── */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+a.card:hover { border-color: var(--faint); transform: translateY(-3px); }
+
+.card-art {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  max-width: 100%;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.card-art img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+
+/* a card with no art yet — a quiet placeholder, not a broken image */
+.card-art.placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 45%, rgba(255, 255, 255, 0.06), transparent 70%),
+    repeating-linear-gradient(45deg, transparent 0 14px, rgba(255, 255, 255, 0.018) 14px 15px),
+    var(--surface-2);
+}
+.card-art.placeholder span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  letter-spacing: -0.02em;
+  color: var(--faint);
+}
+
+.card-body { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem 1.35rem 1.4rem; flex: 1; }
+
+.card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+
+.tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+.tag.live { color: #0b0b0b; background: #fff; border-color: #fff; }
+
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+}
+
+.card-desc { color: var(--muted); font-size: 0.98rem; }
+
+.card-cta {
+  margin-top: auto;
+  padding-top: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.card:not(a) .card-cta { color: var(--faint); }
+
+/* ── about ────────────────────────────────────────────────── */
+
+.prose { max-width: 64ch; }
+.prose p { color: var(--muted); margin-block: 0 1.1rem; font-size: 1.08rem; }
+.prose p strong { color: var(--text); font-weight: 600; }
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+}
+.value {
+  padding: 1.4rem 1.4rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.value h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.4rem; }
+.value p { color: var(--muted); font-size: 0.98rem; }
+
+.contact-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.contact-box h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; }
+.contact-box p { color: var(--muted); }
+
+/* ── footer ───────────────────────────────────────────────── */
+
+.studio-foot { border-top: 1px solid var(--line); margin-top: clamp(2rem, 6vh, 4rem); }
+
+.studio-foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem 2rem;
+  padding-block: 2rem;
+  font-size: 0.88rem;
+  color: var(--faint);
+}
+.studio-foot nav { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; }
+.studio-foot a { color: var(--muted); text-decoration: none; }
+.studio-foot a:hover { color: var(--text); }
+
+/* ── reveal on load ───────────────────────────────────────── */
+
+.rise { animation: rise 0.9s ease-out both; }
+.rise-2 { animation: rise 0.9s ease-out 0.15s both; }
+.rise-3 { animation: rise 0.9s ease-out 0.3s both; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ── small screens ────────────────────────────────────────── */
+
+@media (max-width: 520px) {
+  .studio-head-row { height: 60px; }
+  .brand { font-size: 0.9rem; letter-spacing: 0.2em; }
+  .studio-nav { gap: 0.1rem; }
+  .studio-nav a { font-size: 0.84rem; padding: 0.45rem 0.65rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .rise-2, .rise-3 { animation: none; }
+  a.card:hover { transform: none; }
+}

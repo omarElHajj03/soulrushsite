@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soul Rush: Escape the depths.</title>
+  <meta name="description" content="Soul Rush is a one-tap gothic survival runner. A lone soul flees the dark on two rails, through six trials, toward the light. Coming to Google Play." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Soul Rush: Escape the depths." />
+  <meta property="og:description" content="A one-tap gothic survival runner. Two rails. Six trials. Coming to Google Play." />
+  <meta property="og:image" content="https://playsoulrush.netlify.app/games/soul-rush/assets/screenshots/the-abyss.png" />
+  <meta property="og:url" content="https://playsoulrush.netlify.app/games/soul-rush/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-head">
+    <div class="container site-head-row">
+      <a href="../../"><span class="back-arrow" aria-hidden="true">&larr;</span>PL Labs</a>
+      <nav class="head-nav">
+        <a href="../">All games</a>
+        <a href="../../privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── hero: the game's start screen, re-set in HTML ────── -->
+  <main id="top">
+    <section class="hero">
+      <span class="mote" style="left: 12%; top: 24%"></span>
+      <span class="mote" style="left: 28%; top: 68%"></span>
+      <span class="mote" style="left: 45%; top: 15%"></span>
+      <span class="mote" style="left: 63%; top: 78%"></span>
+      <span class="mote" style="left: 78%; top: 32%"></span>
+      <span class="mote" style="left: 90%; top: 58%"></span>
+
+      <div class="container hero-grid">
+        <div class="hero-menu">
+          <h1 class="hero-title rise"><span>Soul</span> <span>Rush</span></h1>
+
+          <svg class="orn rise-2" viewBox="0 0 260 24" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M10 11 C 52 3, 88 19, 118 11" />
+              <path d="M250 11 C 208 3, 172 19, 142 11" />
+            </g>
+            <circle cx="10" cy="11" r="2" fill="currentColor" />
+            <circle cx="250" cy="11" r="2" fill="currentColor" />
+            <g>
+              <circle cx="130" cy="10" r="5" fill="currentColor" />
+              <path d="M127.4 13.6 L130 20 L132.6 13.6 Z" fill="currentColor" />
+              <circle cx="128.2" cy="9.2" r="0.9" fill="#050505" />
+              <circle cx="131.8" cy="9.2" r="0.9" fill="#050505" />
+            </g>
+          </svg>
+
+          <p class="tagline rise-2">Escape the depths.</p>
+          <p class="hero-stats rise-2">Six trials &middot; Two rails &middot; One tap</p>
+
+          <p class="hero-copy rise-3">
+            A lone soul flees the dark. Swap rails with a tap, thread the
+            sentinels, graze ruin close enough to feed on it  and let the
+            Soul Surge carry you where nothing can touch you.
+          </p>
+
+          <p class="rise-3">
+            <span class="plaque">Coming to Google Play</span>
+          </p>
+          <p class="plaque-sub rise-3">Android &middot; PL Labs &middot; 2026</p>
+        </div>
+
+        <div class="hero-phone phone rise-3">
+          <img
+            src="assets/screenshots/the-abyss.png"
+            width="780" height="1560"
+            alt="Soul Rush gameplay: the phase banner 'The Abyss: Where forgotten souls awaken.' over a dark cavern, a glowing white soul orb riding the left rail."
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── the rite: how it plays ─────────────────────────── -->
+    <section class="section" id="game">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">The rite</p>
+          <h2 class="section-title">One tap. No mercy.</h2>
+          <p class="section-sub quote">
+            The depths rise beneath you. The only way out is up.
+          </p>
+        </div>
+
+        <div class="rite-grid">
+          <div class="rite reveal">
+            <span class="eyebrow">Tap</span>
+            <h3>Swap rails</h3>
+            <p>Two rails run the length of the dark. One tap crosses between
+            them. Timing is the whole language.</p>
+          </div>
+          <div class="rite reveal">
+            <span class="eyebrow">Graze</span>
+            <h3>Feed the meter</h3>
+            <p>Near misses are not mistakes. Every close call feeds the
+            surge meter. Brush disaster to earn power.</p>
+          </div>
+          <div class="rite reveal">
+            <span class="eyebrow">Surge</span>
+            <h3>Soul Surge</h3>
+            <p>Unleash a meteor dash: untouchable, blinding, hurling the
+            world past you while the score burns upward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── gallery ────────────────────────────────────────── -->
+    <section class="section" id="gallery">
+      <div class="section-head container reveal">
+        <p class="eyebrow">From the depths</p>
+        <h2 class="section-title">Glimpses</h2>
+      </div>
+
+      <div class="strip-wrap reveal">
+        <div class="strip">
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/start-screen.png" width="780" height="1560" loading="lazy" alt="Soul Rush start screen: the glowing title above a PLAY plaque and the tagline 'Escape the depths.'" /></div>
+            <figcaption>The vigil</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/gameplay.png" width="780" height="1560" loading="lazy" alt="Mid-run gameplay: the white soul orb on the left rail while a red-eyed sentinel waits on the right." /></div>
+            <figcaption>The run</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/soul-surge.png" width="780" height="1560" loading="lazy" alt="Soul Surge activation: shock rings and speed streaks radiating from the blazing soul." /></div>
+            <figcaption>Soul Surge</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/judgment.png" width="780" height="1560" loading="lazy" alt="The phase banner 'Judgment: Only the worthy endure' over ranks of spike walls." /></div>
+            <figcaption>Judgment</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/the-final-trial.png" width="780" height="1560" loading="lazy" alt="The phase banner 'The Final Trial' as pincer blades close and the pale liquid rises from below." /></div>
+            <figcaption>The Final Trial</figcaption>
+          </figure>
+          <figure class="shot">
+            <div class="phone"><img src="assets/screenshots/the-abyss.png" width="780" height="1560" loading="lazy" alt="The opening phase banner 'The Abyss: Where forgotten souls awaken.'" /></div>
+            <figcaption>The Abyss</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── the descent: six phases on two rails ───────────── -->
+    <section class="section" id="phases">
+      <div class="section-head container reveal">
+        <p class="eyebrow">The descent</p>
+        <h2 class="section-title">Six trials stand between you and the light</h2>
+        <p class="section-sub quote">Each phase has a name. Each name is a warning.</p>
+      </div>
+
+      <div class="container descent" id="descent">
+        <div class="descent-track" aria-hidden="true">
+          <svg preserveAspectRatio="none">
+            <path class="rail-base" d="" />
+            <path class="rail-lit" d="" />
+          </svg>
+          <div class="descent-orb"></div>
+        </div>
+
+        <article class="phase reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase I</p>
+            <h3 class="phase-name">The Abyss</h3>
+            <p class="phase-quote quote">&ldquo;Where forgotten souls awaken.&rdquo;</p>
+            <p class="phase-desc">The dark is gentle here. Learn the rails.</p>
+          </div>
+        </article>
+
+        <article class="phase alt reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase II</p>
+            <h3 class="phase-name">Despair</h3>
+            <p class="phase-quote quote">&ldquo;Hope begins to fade.&rdquo;</p>
+            <p class="phase-desc">The walls grow teeth. The sentinels open their eyes.</p>
+          </div>
+        </article>
+
+        <article class="phase reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase III</p>
+            <h3 class="phase-name">Purgatory</h3>
+            <p class="phase-quote quote">&ldquo;Neither lost nor free.&rdquo;</p>
+            <p class="phase-desc">Patterns turn cruel. Rhythm is the only shelter.</p>
+          </div>
+        </article>
+
+        <article class="phase alt reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase IV</p>
+            <h3 class="phase-name">Ascension</h3>
+            <p class="phase-quote quote">&ldquo;The light finally answers.&rdquo;</p>
+            <p class="phase-desc">Speed becomes prayer. The shaft above brightens.</p>
+          </div>
+        </article>
+
+        <article class="phase reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase V</p>
+            <h3 class="phase-name">Judgment</h3>
+            <p class="phase-quote quote">&ldquo;Only the worthy endure.&rdquo;</p>
+            <p class="phase-desc">Blades in ranks. One graze from ruin  or from power.</p>
+          </div>
+        </article>
+
+        <article class="phase alt final reveal">
+          <span class="phase-node"></span>
+          <div class="phase-body">
+            <p class="phase-num">Phase VI</p>
+            <h3 class="phase-name">The Final Trial</h3>
+            <p class="phase-quote quote">&ldquo;The depths hold nothing back.&rdquo;</p>
+            <p class="phase-desc">Everything the dark has learned about you, at once.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── finale ─────────────────────────────────────────── -->
+    <section class="section finale" id="soon">
+      <div class="container reveal">
+        <svg class="orn" viewBox="0 0 260 24" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M10 11 C 52 3, 88 19, 118 11" />
+            <path d="M250 11 C 208 3, 172 19, 142 11" />
+          </g>
+          <circle cx="10" cy="11" r="2" fill="currentColor" />
+          <circle cx="250" cy="11" r="2" fill="currentColor" />
+          <g>
+            <circle cx="130" cy="10" r="5" fill="currentColor" />
+            <path d="M127.4 13.6 L130 20 L132.6 13.6 Z" fill="currentColor" />
+            <circle cx="128.2" cy="9.2" r="0.9" fill="#050505" />
+            <circle cx="131.8" cy="9.2" r="0.9" fill="#050505" />
+          </g>
+        </svg>
+        <h2 class="section-title">The gate opens soon.</h2>
+        <p class="section-sub quote">Keep a light burning.</p>
+        <p><span class="plaque">Coming to Google Play</span></p>
+        <p class="plaque-sub">Free &middot; Offline</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="liquid" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" focusable="false">
+      <path fill="#232327" d="M0,38 C120,26 260,52 420,44 C580,36 700,14 860,22 C1020,30 1140,54 1290,46 C1360,42 1400,34 1440,30 L1440,100 L0,100 Z"/>
+      <path fill="#8f8d95" d="M0,62 C140,50 280,72 440,64 C600,56 720,38 880,46 C1040,54 1160,74 1310,66 C1370,63 1410,58 1440,54 L1440,100 L0,100 Z"/>
+      <path fill="#f2f0ea" d="M0,84 C160,74 300,92 460,86 C620,80 740,64 900,70 C1060,76 1180,92 1330,86 C1380,84 1415,80 1440,78 L1440,100 L0,100 Z"/>
+    </svg>
+  </div>
+  <footer class="site-foot">
+    <div class="container foot-row">
+      <span>&copy; 2026 PL Labs</span>
+      <span>Soul Rush</span>
+      <nav class="foot-row" style="padding-block: 0; border: 0; gap: 2.4rem">
+        <a href="../../privacy.html">Privacy Policy</a>
+        <a href="mailto:omarwaelelhajj@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

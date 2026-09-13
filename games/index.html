@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Games &amp; Services &middot; PL Labs</title>
+  <meta name="description" content="Every game and project from PL Labs, released and upcoming." />
+  <meta name="theme-color" content="#070708" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/studio.css" />
+</head>
+<body>
+
+  <header class="studio-head">
+    <div class="container studio-head-row">
+      <a class="brand" href="../">PL Labs</a>
+      <nav class="studio-nav" aria-label="Main">
+        <a href="../about/">About Us</a>
+        <a href="./" aria-current="page">Games &amp; Services</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container page-head">
+      <p class="eyebrow rise">Games &amp; Services</p>
+      <h1 class="page-title rise-2">Our work</h1>
+      <p class="page-lead rise-3">
+        Everything we&rsquo;ve released and everything on the way.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Our games</p>
+            <h2 class="section-title">Games</h2>
+          </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════
+             PROJECT CARDS. To add a project: copy a card, point it at
+             its page (games/<slug>/), and move it from "In development"
+             up to "Games" when it ships. A card with no page yet
+             is a <div class="card"> (not a link). See CLAUDE.md.
+             Also update the cards on the home page (/index.html).
+             ════════════════════════════════════════════════════ -->
+        <div class="card-grid">
+          <a class="card" href="soul-rush/">
+            <div class="card-art"><img src="soul-rush/assets/screenshots/gameplay.png" alt="Soul Rush gameplay: a glowing soul orb on the left rail of a dark cavern." loading="lazy" width="780" height="1560" /></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="tag live">Android</span></div>
+              <h3 class="card-title">Soul Rush</h3>
+              <p class="card-desc">A one-tap gothic survival runner. Swap rails, graze danger to charge your power, and climb through six trials toward the light.</p>
+              <span class="card-cta">View game &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Coming soon</p>
+            <h2 class="section-title">In development</h2>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-art placeholder"><span>Soul Block</span></div>
+            <div class="card-body">
+              <div class="card-meta"><span class="tag">In development</span></div>
+              <h3 class="card-title">Soul Block</h3>
+              <p class="card-desc">Our next game. More soon.</p>
+              <span class="card-cta">Coming soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="studio-foot">
+    <div class="container studio-foot-row">
+      <span>&copy; 2026 PL Labs</span>
+      <nav aria-label="Footer">
+        <a href="../about/">About Us</a>
+        <a href="./">Games &amp; Services</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="mailto:omarwaelelhajj@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

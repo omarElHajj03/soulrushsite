@@ -1,5 +1,6 @@
 /* ════════════════════════════════════════════════════════════
-   SOUL RUSH — marketing site (GitHub Pages, /docs)
+   SOUL RUSH — game page (/games/soul-rush/) on the PL Labs site.
+   Also styles /privacy.html, which is Soul Rush's privacy policy.
    Palette + type are lifted straight from the game itself:
    near-black void, bone white, soul glow, crimson kept for
    danger only (in-game, red exists solely in sentinel eyes).
@@ -92,6 +93,7 @@ a:hover { color: var(--soul); }
   color: var(--ink);
 }
 .site-head a:hover { color: var(--crimson); }
+.head-nav { display: flex; gap: clamp(1.2rem, 4vw, 2.4rem); }
 .site-head a:focus-visible { outline-color: var(--ink); }
 
 /* the back arrow reads at a glance, larger than the tracked label */
