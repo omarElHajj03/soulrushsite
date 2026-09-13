@@ -82,15 +82,23 @@
 
     <section class="section">
       <div class="container">
-        <!-- Contact shows the address itself: a bare mailto: button does
-             nothing on computers with no mail app set up. -->
+        <!-- "Email us" offers webmail compose links as well as mailto:, because
+             a bare mailto: does nothing on a computer with no mail app set up. -->
         <div class="contact-box" id="contact">
           <div>
             <h2>Get in touch</h2>
-            <p>Questions, feedback, or business enquiries. Email us at</p>
-            <a class="contact-email" href="mailto:omarwaelelhajj@gmail.com">omarwaelelhajj@gmail.com</a>
+            <p>Questions, feedback, or business enquiries.</p>
+            <p class="contact-email">omarwaelelhajj@gmail.com</p>
           </div>
-          <button class="btn primary" type="button" data-copy="omarwaelelhajj@gmail.com">Copy email</button>
+          <details class="mail-menu">
+            <summary class="btn primary">Email us</summary>
+            <div class="mail-menu-list">
+              <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=omarwaelelhajj@gmail.com" target="_blank" rel="noopener">Gmail</a>
+              <a href="https://outlook.live.com/mail/0/deeplink/compose?to=omarwaelelhajj@gmail.com" target="_blank" rel="noopener">Outlook</a>
+              <a href="https://compose.mail.yahoo.com/?to=omarwaelelhajj@gmail.com" target="_blank" rel="noopener">Yahoo Mail</a>
+              <a href="mailto:omarwaelelhajj@gmail.com">Default mail app</a>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -108,28 +116,16 @@
   </footer>
 
   <script>
-    // "Copy email" — clipboard API where allowed, textarea fallback on
-    // plain-http previews where navigator.clipboard is unavailable.
-    document.querySelectorAll("[data-copy]").forEach((btn) => {
-      const label = btn.textContent;
-      btn.addEventListener("click", async () => {
-        const text = btn.dataset.copy;
-        try {
-          await navigator.clipboard.writeText(text);
-        } catch {
-          const ta = document.createElement("textarea");
-          ta.value = text;
-          ta.style.position = "fixed";
-          ta.style.opacity = "0";
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          ta.remove();
-        }
-        btn.textContent = "Copied!";
-        setTimeout(() => (btn.textContent = label), 1800);
-      });
+    // The mail menu is a plain <details>, so it opens without JS; this only
+    // closes it on an outside click, on Escape, or once a service is picked.
+    const menu = document.querySelector(".mail-menu");
+    document.addEventListener("click", (e) => {
+      if (menu.open && !menu.contains(e.target)) menu.open = false;
     });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") menu.open = false;
+    });
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => (menu.open = false)));
   </script>
 
 </body>
